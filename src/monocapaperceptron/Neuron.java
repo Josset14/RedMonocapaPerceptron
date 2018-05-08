@@ -5,6 +5,7 @@
  */
 package monocapaperceptron;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,65 +13,56 @@ import java.util.List;
  * @author MAC
  */
 public class Neuron {
+
+    private double[] x;
+    private double[] w;
+    private double bias;
     
-    private int[] entradas; 
-    private List<Double> x;
-    private List<Double> w;
-    private double polarizacion;
-    
-    public Neuron(int nEntradas) {
-        this.entradas = new int[nEntradas]; 
+    public double[] getX() {
+        return x;
     }
-    public int cantidadEntradas(){
-            return this.entradas.length;
+
+    public void setX(double[] x) {
+        this.x = x;
+    }
+
+    public double[] getW() {
+        return w;
+    }
+
+    public void setW(double[] w) {
+        this.w = w;
+    }
+
+    public double getBias() {
+        return bias;
+    }
+
+    public void setBias(double bias) {
+        this.bias = bias;
     }
     public int sinapsis(){
-
-        if(this.entradas.length == this.x.size() && this.x.size() == this.w.size()){
-            return funcionActivacion(pNeto()+this.polarizacion);
+        double pNeto=0;
+        //Calculamos el peso neto
+        if(w.length==x.length){
+            for(int i=0;i<this.w.length;i++){
+                pNeto =pNeto +(this.w[i]*this.x[i]);
+            }
+            return hardlim(pNeto+this.bias);
         }else{
-            System.out.println("ERROR Entradas: "+this.entradas.length+" X: "+this.x.size()+" W: "+this.w.size());
+            System.out.println("ERROR Entradas no iguales  X: "+this.x.length+" W: "+this.w.length);
             return 0;
         }
     }
-    public void setX(List<Double> x){
-        this.x=x;
-    }
-    public List<Double> getX(){
-        return this.x;
-    }
-    public void setW(List<Double> w){
-        this.w=w;
-    }
-    public List<Double> getW(){
-        return this.w;
-    }
-    public void setPolarizacion(Double polarizacion){
-        this.polarizacion= polarizacion;
-    }
-    public Double getPolarizacion(){
-        return this.polarizacion;
-    }
-    private double pNeto(){
-        double pNeto=0;
-        for(int i=0;i<this.w.size();i++){
-            pNeto =pNeto +(this.w.get(i)*this.x.get(i));
-        }
-        return pNeto;
-    }
-    private int funcionActivacion(double n){
+    private int hardlim(double n){
         if(n>=0){
             return 1;
         }else{
             return 0;
         }
     }
-
     @Override
     public String toString() {
-        return "Neuron{" + "entradas=" + entradas.length + ", x=" + x + ", w=" + w + ", polatizacion=" + polarizacion + '}'; 
+        return "Neuron{" + "x=" + Arrays.toString(x) + ", w=" + Arrays.toString(w) + ", bias=" + bias + '}';
     }
-    
-    
 }
-
