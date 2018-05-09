@@ -9,8 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
- * @author MAC
+ * @author Miguel Angel Cotrina Espinoza
+ * Universidad Tecnologica del Peru
+ * Correo: 0820832@utp.edu.pe
  */
 public class Neuron {
 
