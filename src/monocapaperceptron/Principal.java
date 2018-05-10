@@ -21,24 +21,7 @@ public class Principal {
     public static void main(String[] args) {
         operacionBibliotecario();
     }
-    public static void operadorSimple(){
-        // Entrada de las cuatro operaciones posibles para un operador logico
-        double[][] Entradas =  {{0,0},
-                                {0,1},
-                                {1,0},
-                                {1,1}};
-        //SAlida esperada en este caso un AND = 0,0,0,1
-        double[] salidaEsperada = {0,0,0,1};
-        //Procedemos a entrenar a la neurona
-        Neuron neurona = new Neuron();
-        Trainer trainer = new Trainer();
-        neurona = trainer.train(neurona, Entradas, salidaEsperada,100);
-        //Probamos la neurona entrenada
-        double[] datoPrueba = {1,0};
-        neurona.setX(datoPrueba);
-        System.out.println(neurona.toString());
-        System.out.println("Salida del Perceptron: "+neurona.sinapsis());
-    }
+    
     public static void operacionBibliotecario(){
         // Entrada para las neuronas
         double[][] Entradas =  {{0.7,3},
