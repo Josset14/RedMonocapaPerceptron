@@ -63,6 +63,7 @@ public class Principal {
         neurona[1].setX(datoPrueba1);
         System.out.println(neurona[0].toString());
         System.out.println(neurona[1].toString());
+        Graficar grafica = new Graficar(500,neurona);
         System.out.println("Salida del Perceptron: "+neurona[0].sinapsis()+" "+neurona[1].sinapsis());
     }
 }
